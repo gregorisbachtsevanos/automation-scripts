@@ -2,10 +2,10 @@ import nmap
 import subprocess
 import re
 
-def get_default_gateway_linux():
-    """Retrieve the default gateway on a Linux system."""
-    result = subprocess.run(['ip', 'route'], capture_output=True, text=True)
-    gateway = re.search(r'default via (\d+\.\d+\.\d+\.\d+)', result.stdout)
+def get_default_gateway_windows():
+    """Retrieve the default gateway on a Windows system."""
+    result = subprocess.run(['ipconfig'], capture_output=True, text=True)
+    gateway = re.search(r'Default Gateway.*?: (\d+\.\d+\.\d+\.\d+)', result.stdout)
     if gateway:
         return gateway.group(1)
     else:
@@ -28,7 +28,7 @@ def scan_network(gateway_ip):
 
 def main():
     try:
-        gateway_ip = get_default_gateway_linux()
+        gateway_ip = get_default_gateway_windows()
         print(f"Default Gateway: {gateway_ip}")
         devices = scan_network(gateway_ip)
         print(f"Devices connected to the network: {len(devices)}")
@@ -39,3 +39,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
