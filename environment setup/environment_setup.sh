@@ -11,9 +11,9 @@ create_env_file() {
 
   cat <<EOL > $filename
 # Environment variables for $filename
-VITE_API_URL=http://your-api-url.com
-VITE_API_KEY=your-api-key
-VITE_OTHER_VARIABLE=your-other-variable
+REACT_APP_API_URL=http://your-api-url.com
+REACT_APP_API_KEY=your-api-key
+REACT_APP_OTHER_VARIABLE=your-other-variable
 EOL
 
   echo "$filename created with example variables."
@@ -41,10 +41,18 @@ EOL
 
 echo ".prettierrc created with Prettier configuration."
 
-# Install Prettier and other dev dependencies
-echo "Installing Prettier and other dev dependencies"
-npm install --save-dev prettier eslint eslint-config-prettier eslint-plugin-prettier
+# Install Prettier, env-cmd, and other dev dependencies
+echo "Installing Prettier, env-cmd, and other dev dependencies"
+npm install --save-dev prettier eslint eslint-config-prettier eslint-plugin-prettier env-cmd
 
-echo "Prettier and other dev dependencies installed successfully."
+echo "Prettier, env-cmd, and other dev dependencies installed successfully."
 
-echo "Environment variable files created successfully."
+# Add scripts to package.json
+echo "Adding scripts to package.json"
+npx json -I -f package.json -e 'this.scripts["dev:uat"]="env-cmd -f .env.uat vite"'
+npx json -I -f package.json -e 'this.scripts["dev:prod"]="env-cmd -f .env.prod vite"'
+npx json -I -f package.json -e 'this.scripts["build:uat"]="env-cmd -f .env.uat vite build"'
+npx json -I -f package.json -e 'this.scripts["build:prod"]="env-cmd -f .env.prod vite build"'
+
+echo "Scripts added to package.json successfully."
+echo "Environment variable files, Prettier configuration file, and package.json scripts setup completed."
