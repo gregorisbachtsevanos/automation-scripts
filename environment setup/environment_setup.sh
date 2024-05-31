@@ -133,4 +133,11 @@ npx json -I -f package.json -e 'this.scripts["build:uat"]="env-cmd -f .env.uat v
 npx json -I -f package.json -e 'this.scripts["build:prod"]="env-cmd -f .env.prod vite build"'
 
 echo "Scripts added to package.json successfully."
-echo "Environment variable files, Prettier configuration file, TypeScript configuration files, Vite configuration file, and package.json scripts setup completed."
+
+# Create directory structure in src
+echo "Creating directory structure in src"
+mkdir -p src/{app/assets,components,constants,features,hooks,layouts,routes,utils}
+mkdir -p src/app/services
+
+echo "Directory structure created successfully."
+echo "Environment variable files, Prettier configuration file, TypeScript configuration files, Vite configuration file, directory structure, and package.json scripts setup completed."
