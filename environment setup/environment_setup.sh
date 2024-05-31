@@ -89,11 +89,41 @@ TSCONFIG_NODE='{
 }'
 create_json_file "tsconfig.node.json" "$TSCONFIG_NODE"
 
+# Rewrite vite.config.ts file
+VITE_CONFIG='import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
+import mkcert from "vite-plugin-mkcert";
+import svgr from "vite-plugin-svgr";
+import tsconfigPaths from "vite-tsconfig-paths";
+
+// https://vitejs.dev/config/
+export default defineConfig({
+  build: {
+    outDir: "build",
+  },
+  server: {
+    host: true,
+    https: true,
+    open: true,
+    port: 3000,
+  },
+  preview: {
+    port: 3000,
+  },
+  plugins: [react(), mkcert(), svgr(), tsconfigPaths()],
+});
+'
+create_json_file "vite.config.ts" "$VITE_CONFIG"
+
 # Install Prettier, env-cmd, and other dev dependencies
 echo "Installing Prettier, env-cmd, and other dev dependencies"
 npm install --save-dev prettier eslint eslint-config-prettier eslint-plugin-prettier env-cmd
 
-echo "Prettier, env-cmd, and other dev dependencies installed successfully."
+# Install Vite plugins
+echo "Installing Vite plugins"
+npm install --save-dev vite @vitejs/plugin-react vite-plugin-mkcert vite-plugin-svgr vite-tsconfig-paths
+
+echo "Prettier, env-cmd, Vite plugins, and other dev dependencies installed successfully."
 
 # Add scripts to package.json
 echo "Adding scripts to package.json"
@@ -103,4 +133,4 @@ npx json -I -f package.json -e 'this.scripts["build:uat"]="env-cmd -f .env.uat v
 npx json -I -f package.json -e 'this.scripts["build:prod"]="env-cmd -f .env.prod vite build"'
 
 echo "Scripts added to package.json successfully."
-echo "Environment variable files, Prettier configuration file, TypeScript configuration files, and package.json scripts setup completed."
+echo "Environment variable files, Prettier configuration file, TypeScript configuration files, Vite configuration file, and package.json scripts setup completed."
