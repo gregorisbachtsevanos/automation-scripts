@@ -42,11 +42,12 @@ execute_script() {
 
 # Execute each script
 execute_script "$SCRIPT_DIR/delete_unnecessary_files.sh" "delete_unnecessary_files.sh"
-execute_script "$SCRIPT_DIR/install_dependencies.sh" "install_dependencies.sh"
-execute_script "$SCRIPT_DIR/create_env_files.sh" "create_env_files.sh"
-execute_script "$SCRIPT_DIR/create_config_files.sh" "create_config_files.sh"
+execute_script "$SCRIPT_DIR/delete_unnecessary_folders.sh" "delete_unnecessary_folders.sh"
 execute_script "$SCRIPT_DIR/create_directory_structure.sh" "create_directory_structure.sh"
-execute_script "$SCRIPT_DIR/create_store_and_api_files.sh" "create_store_and_api_files.sh"
+execute_script "$SCRIPT_DIR/create_necessary_files.sh" "create_necessary_files.sh"
+execute_script "$SCRIPT_DIR/create_root_files.sh" "create_root_files.sh"
+execute_script "$SCRIPT_DIR/create_app_file.sh" "create_app_file.sh"
+execute_script "$SCRIPT_DIR/install_dependencies.sh" "install_dependencies.sh"
 execute_script "$SCRIPT_DIR/dockerfile_interactive.sh" "dockerfile_interactive.sh"
 execute_script "$SCRIPT_DIR/add_scripts_to_packagejson.sh" "add_scripts_to_packagejson.sh"
 
