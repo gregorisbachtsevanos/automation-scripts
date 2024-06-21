@@ -32,7 +32,7 @@ delete_sh_files() {
 # Prompt user for action
 echo "What would you like to do?"
 PS3="Enter your choice: "
-options=("Create 'scripts' directory and move .sh files" "Delete .sh files")
+options=("Move .sh files to new directory" "Delete .sh files")
 select opt in "${options[@]}"; do
   case "$opt" in
     "Create 'scripts' directory and move .sh files")
