@@ -1,20 +1,20 @@
 #!/bin/bash
 
 # Delete unnecessary file if it exists
-if [ -f ".eslintrc.cjs" ]; then
-  echo "Deleting .eslintrc.cjs file..."
-  rm .eslintrc.cjs
-  echo ".eslintrc.cjs file deleted successfully."
+if [ -f ".eslintrc.json" ]; then
+  echo "Deleting .eslintrc.json file..."
+  rm .eslintrc.json
+  echo ".eslintrc.json file deleted successfully."
 else
-  echo ".eslintrc.cjs file not found. No need to delete."
+  echo ".eslintrc.json file not found. No need to delete."
 fi
 
-if [ -f "file_to_delete1.txt" ]; then
-  echo "Deleting file_to_delete1.txt file..."
-  rm file_to_delete1.txt
-  echo "file_to_delete1.txt file deleted successfully."
+if [ -f "vite.config.js" ]; then
+  echo "Deleting vite.config.js file..."
+  rm vite.config.js
+  echo "vite.config.js file deleted successfully."
 else
-  echo "file_to_delete1.txt file not found. No need to delete."
+  echo "vite.config.js file not found. No need to delete."
 fi
 
 if [ -f "file_to_delete2.js" ]; then
