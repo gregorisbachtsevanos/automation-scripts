@@ -23,7 +23,7 @@ ESLINTRC='{
   },
   "extends": "react-app"
 }'
-create_json_file ".eslintrc.json" "$ESLINTRC"
+create_json_file ".eslintrc.cjs" "$ESLINTRC"
 
 # Create Prettier configuration file
 PRETTIER_CONFIG='{
