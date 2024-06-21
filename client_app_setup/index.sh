@@ -40,6 +40,8 @@ execute_script() {
   fi
 }
 
+sh_files=$(ls *.sh 2>/dev/null)
+
 # Execute each script
 execute_script "$SCRIPT_DIR/setup_vite_project.sh" "setup_vite_project.sh"
 execute_script "$SCRIPT_DIR/delete_unnecessary_files.sh" "delete_unnecessary_files.sh"
