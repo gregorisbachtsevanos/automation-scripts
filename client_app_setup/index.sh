@@ -50,7 +50,9 @@ execute_script "$SCRIPT_DIR/create_directory_structure.sh" "create_directory_str
 execute_script "$SCRIPT_DIR/create_store_and_api_files.sh" "create_store_and_api_files.sh"
 execute_script "$SCRIPT_DIR/dockerfile_interactive.sh" "dockerfile_interactive.sh"
 execute_script "$SCRIPT_DIR/add_scripts_to_packagejson.sh" "add_scripts_to_packagejson.sh"
-execute_script "$SCRIPT_DIR/clean_up.sh" "clean_up.sh"
+if [ -n "$sh_files" ]; then
+  execute_script "$SCRIPT_DIR/clean_up.sh" "clean_up.sh"
+fi
 
 if [ "$SETUP_SUCCESS" = true ]; then
   print_success "Setup completed successfully."
