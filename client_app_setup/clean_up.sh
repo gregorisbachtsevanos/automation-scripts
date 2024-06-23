@@ -35,7 +35,7 @@ PS3="Enter your choice: "
 options=("Move .sh files to new directory" "Delete .sh files")
 select opt in "${options[@]}"; do
   case "$opt" in
-    "Create 'scripts' directory and move .sh files")
+    "Move .sh files to new directory")
       move_sh_files_to_scripts_directory
       break
       ;;
