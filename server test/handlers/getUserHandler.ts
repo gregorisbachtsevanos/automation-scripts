@@ -4,12 +4,15 @@ import UserService from "../services/userService";
 
 const userService = new UserService();
 
-export const getUser = async (req: Request, res: Response): Promise<void> => {
+export const getUsersHandler = async (
+	req: Request,
+	res: Response
+): Promise<void> => {
 	const userId = req.params.userId;
 	try {
-		const user = await userService.getUserById(userId);
-		if (user) {
-			res.status(200).json(user);
+		const users = await userService.getUsers();
+		if (users) {
+			res.status(200).json(users);
 		} else {
 			res.status(404).json({ message: "User not found" });
 		}

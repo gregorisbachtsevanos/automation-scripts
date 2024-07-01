@@ -14,6 +14,12 @@ class UserService {
 		return user;
 	}
 
+	async getUsers(): Promise<User | undefined> {
+		// Example: Fetch users from an in-memory array or database
+		const user = this.users.find((u) => u.id === userId);
+		return user;
+	}
+
 	async createUser(userData: any): Promise<User> {
 		// Example: Create a new user and store in an in-memory array or database
 		const newUser: User = {

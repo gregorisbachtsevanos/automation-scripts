@@ -5,7 +5,7 @@ import logger from "morgan";
 import cors from "cors";
 import multer from "multer";
 
-import serverErrorHandler from "./utils/serverErrorHandler.js";
+import serverErrorHandler from "./utils/ExpressErrorHandler.js";
 
 import "./config/index.js";
 import { userRouter } from "./routes/userRouter.js";
