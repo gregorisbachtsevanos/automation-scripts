@@ -1,11 +1,12 @@
-// userController.ts
 import { Request, Response } from "express";
 import UserService from "../services/userService";
-import { getUsersHandler } from "../handlers/getUserHandler";
-import { createUserHandler } from "../handlers/createUserHandler";
-import { editUserHandler } from "../handlers/editUserHandler";
-import { deleteUserHandler } from "../handlers/deleteHandler";
-import { getUserByIdHandler } from "../handlers/getUserByIdHandler";
+import {
+	createUserHandler,
+	deleteUserHandler,
+	editUserHandler,
+	getUserByIdHandler,
+	getUsersHandler,
+} from "../handlers";
 
 class UserController {
 	static createUser: any;

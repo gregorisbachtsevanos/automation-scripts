@@ -1,29 +1,28 @@
-// userService.ts
-import { User } from "../models/User"; // Assuming User model is defined somewhere
-
+import { IUser } from "../model/userModel";
+import { v4 as uuidv4 } from "uuid";
 class UserService {
-	private users: User[]; // Example in-memory storage, replace with DB access
+	private users: IUser[]; // Example in-memory storage, replace with DB access
 
 	constructor() {
 		this.users = []; // Initialize with an empty array or fetch from DB
 	}
 
-	async getUserById(userId: string): Promise<User | undefined> {
+	async getUserById(userId: string): Promise<IUser | undefined> {
 		// Example: Fetch user from an in-memory array or database
 		const user = this.users.find((u) => u.id === userId);
 		return user;
 	}
 
-	async getUsers(): Promise<User | undefined> {
+	async getUsers(): Promise<IUser | undefined> {
 		// Example: Fetch users from an in-memory array or database
 		const user = this.users.find((u) => u.id === userId);
 		return user;
 	}
 
-	async createUser(userData: any): Promise<User> {
+	async createUser(userData: IUser): Promise<IUser> {
 		// Example: Create a new user and store in an in-memory array or database
-		const newUser: User = {
-			id: Math.random().toString(36).substr(2, 9), // Example: Generate unique ID
+		const newUser: IUser = {
+			id: uuidv4(),
 			name: userData.name,
 			email: userData.email,
 			// other properties as needed
@@ -36,7 +35,7 @@ class UserService {
 	async updateUser(
 		userId: string,
 		updatedUserData: any
-	): Promise<User | undefined> {
+	): Promise<IUser | undefined> {
 		// Example: Update user information in an in-memory array or database
 		const userIndex = this.users.findIndex((u) => u.id === userId);
 		if (userIndex !== -1) {

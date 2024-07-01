@@ -42,15 +42,13 @@ server.on("listening", onListening);
 function normalizePort(val) {
 	var port = parseInt(val, 10);
 
-	if (isNaN(port)) {
+	if (isNaN(port))
 		// named pipe
 		return val;
-	}
 
-	if (port >= 0) {
+	if (port >= 0)
 		// port number
 		return port;
-	}
 
 	return false;
 }
@@ -60,9 +58,7 @@ function normalizePort(val) {
  */
 
 function onError(error) {
-	if (error.syscall !== "listen") {
-		throw error;
-	}
+	if (error.syscall !== "listen") throw error;
 
 	var bind = typeof port === "string" ? "Pipe " + port : "Port " + port;
 
@@ -87,6 +83,6 @@ function onError(error) {
 
 function onListening() {
 	var addr = server.address();
-	var bind = typeof addr === "string" ? "pipe " + addr : "port " + addr.port;
+	var bind = typeof addr === "string" ? "pipe " + addr : "port " + addr?.port;
 	log.trace("Listening on " + bind);
 }
